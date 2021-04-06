@@ -1,4 +1,4 @@
-FROM cloudmonitor/laravel
+FROM cloudmonitor/laravel-app
 
 COPY entrypoint /usr/local/bin/entrypoint
 
