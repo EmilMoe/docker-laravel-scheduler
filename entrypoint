@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
 set -e
+
+if [ ! -f "/installed" ]
+then
+  echo "* * * * * cd /var/www/html && php artisan \${COMMAND} >> /dev/null 2>&1" > /cron
+  crontab /cron
+  rm /cron
+  echo true > /installed
+fi;
+
 printenv | grep -v "no_proxy" >> /etc/environment
 cron -f
